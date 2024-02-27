@@ -11,10 +11,10 @@ use bevy::{
 };
 use byteorder::LE;
 use format::flver::{
-    accessor::VertexAttributeAccessor,
     face_set::FaceSetIndices,
     mesh::Mesh as FlverMesh,
-    reader::{VertexAttributeFormat, VertexAttributeSemantic, FLVER},
+    reader::FLVER,
+    vertex_buffer::{VertexAttributeAccessor, VertexAttributeFormat, VertexAttributeSemantic},
     Flver,
 };
 
@@ -103,7 +103,7 @@ fn load_mesh(flver: &Flver, flver_mesh: &FlverMesh<LE>) -> Mesh {
     let layout_members = flver.vertex_attributes(layout);
 
     for member in layout_members {
-        use format::flver::reader::VertexAttributeSemantic::*;
+        use format::flver::vertex_buffer::VertexAttributeSemantic::*;
 
         let accessor = flver.vertex_attribute_accessor(buffer, member);
         let semantic = VertexAttributeSemantic::from(member.semantic_id.get());

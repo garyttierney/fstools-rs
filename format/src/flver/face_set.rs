@@ -33,3 +33,8 @@ impl<O: ByteOrder> FaceSet<O> {
 }
 
 impl<O: ByteOrder> FlverHeaderPart for FaceSet<O> {}
+
+pub const FACESET_FLAG_LOD1: u32 = 0x01000000;
+pub const FACESET_FLAG_LOD2: u32 = 0x02000000;
+pub const FACESET_FLAG_EDGECOMPRESSED: u32 = 0x40000000;
+pub const FACESET_FLAG_MOTIONBLUR: u32 = 0x80000000;
